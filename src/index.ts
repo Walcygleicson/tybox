@@ -1,1 +1,2 @@
-export type * from "./functions/index"
+export type * from "./functions"
+export type * from "./objects"
