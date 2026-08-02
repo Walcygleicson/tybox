@@ -1,2 +1,4 @@
-export type * from "./NthParameter"
 export type * from "./FirstParameter"
+export type * from "./LastParameter"
+export type * from "./NthParameter"
+export type * from "./AnyFunction"
