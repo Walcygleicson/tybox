@@ -1,2 +1,2 @@
 export type * from "./DeepPartial"
-export type * from "./AnyObject"
+export type * from "./PlainObject"
