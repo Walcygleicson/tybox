@@ -1,4 +1,4 @@
-export type * from "./functions"
-export type * from "./objects"
+export type * from "./function"
+export type * from "./object"
 export type * from "./array"
 export type * from "./union"
