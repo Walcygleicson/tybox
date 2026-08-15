@@ -1,4 +1,5 @@
-import type { PlainObject } from "../objects";
+import type { NonRecursive } from "../__internal__";
+
 /**
  * Converts a **`tuple`**, **`plain object`**, or **`Set`** into an array of types. Other types result in **`never`**.
  *
@@ -11,9 +12,11 @@ import type { PlainObject } from "../objects";
  * type C = Arrayfy<Set<number | string | boolean>> // (number | string | boolean)[]
  */
 export type Arrayfy<T> = T extends readonly unknown[]
-? T[number][] // Tupla para Array
-: T extends Set<infer U> // Set para Array
+  ? T[number][]
+  : T extends Set<infer U>
     ? U[]
-    : T extends PlainObject // Objeto plano para Array
-      ? T[keyof T][]
-      : never;
+    : T extends NonRecursive
+      ? never
+      : T extends object
+        ? T[keyof T][]
+        : never;

@@ -1,3 +1,5 @@
+import type { NonRecursive } from "../__internal__";
+
 /**
  * Igual ao **`Omit<T, K>`** nativo, mas remove as chaves recursivamente em
  * qualquer nível de aninhamento.
@@ -20,13 +22,10 @@
  * 
  */
 export type DeepOmit<T, K extends PropertyKey> = T extends
-  Preserve
+  NonRecursive
   ? T
   : T extends (infer U)[]
     ? DeepOmit<U, K>[]
     : T extends object
       ? { [P in keyof T as P extends K ? never : P]: DeepOmit<T[P], K> }
       : T;
-
-
-type Preserve = Function | Date | RegExp
