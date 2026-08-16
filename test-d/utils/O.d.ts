@@ -14,4 +14,13 @@ export declare namespace O {
     b: number
     o: { required: any; optional?: any }
   }
+
+  type AllReadonly = {readonly a: number, readonly b: string, readonly c?: boolean}
+
+  type Wide = {
+    required: any;
+    optional?: any;
+    readonly readonly: any;
+    readonly readonlyOpt?: any
+  }
 }
