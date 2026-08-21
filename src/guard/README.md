@@ -1,0 +1,1 @@
+# Tipos de guarda para validação. Retornam sempre um booleano literal (`true` ou `false`).
