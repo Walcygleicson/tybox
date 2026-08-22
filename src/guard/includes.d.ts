@@ -1,5 +1,5 @@
 import type { IsEqual } from "./is-equal"
-import type { Head, Tail } from "../array"
+import type { Head, Tail, ArrayLength } from "../array"
 
 /**
  * Compara cada membro da união **`Member`** com **`U`** e, se todos forem iguais retorna true, casa contrário never.
@@ -30,7 +30,7 @@ type MemberEquals<Members, U> = Members extends any
  */
 export type Includes<T extends readonly any[], U> = T extends readonly []
   ? false
-  : number extends T['length'] // Só é verdadeiro quando o array é genuinamente aberto. Quando isso acontece, em vez de recursar, compara U contra a união de todos os tipos possíveis. Evita erro de recursão infinita para ...rest quando o elemento não é encontrado.
+  : number extends ArrayLength<T> // Só é verdadeiro quando o array é genuinamente aberto. Quando isso acontece, em vez de recursar, compara U contra a união de todos os tipos possíveis. Evita erro de recursão infinita para ...rest quando o elemento não é encontrado.
     ? [MemberEquals<T[number], U>] extends [never]
       ? false
       : true
